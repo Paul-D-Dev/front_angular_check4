@@ -1,6 +1,8 @@
-import { EventService } from './../../shared/services/event.service';
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { Event } from '../../shared/models/event';
+import { EventService } from './../../shared/services/event.service';
+
 
 
 @Component({
@@ -12,9 +14,9 @@ export class EventComponent implements OnInit {
 
 
   events: Event[];
-  @Output() idEvent = new EventEmitter();
 
-  constructor(private eventService: EventService) { }
+  constructor(private eventService: EventService,
+              private router: Router) { }
 
   ngOnInit() {
     this.eventService.get().subscribe((eventsArray: Event[]) => {
@@ -23,9 +25,8 @@ export class EventComponent implements OnInit {
   }
 
   buyTickets(id) {
-    console.log(id);
-
-    this.idEvent.emit(id);
+    this.eventService.salesEventId = id;
+    this.router.navigateByUrl('/billeterie');
   }
 
 }

@@ -4,10 +4,10 @@
 <div class="nav">
   <nav>
       <button mat-button>Accueil</button>
-    <a href="#section_employee"><button mat-button >Equipe</button></a>
-    <a href="#section_event"><button mat-button>Evénements</button></a>
+    <a href="circus/#section_employee"><button mat-button >Equipe</button></a>
+    <a href="circus/#section_event"><button mat-button>Evénements</button></a>
       <button mat-button>Billetterie</button>
-    <a href="#section_circus"><button mat-button>Cirques</button></a>
+    <a href="circus/#section_circus"><button mat-button>Cirques</button></a>
   </nav>
 </div>
 
@@ -24,7 +24,7 @@
 
 </div>
 <app-employee class="employee" id="section_employee"></app-employee>
-<app-event class="event" id="section_event"></app-event>
+<app-event class="event" id="section_event" (idEvent)="getEvent($event)"></app-event>
 <app-circus class="circus" id="section_circus"></app-circus>
 <app-footer class="footer" id="section_footer"></app-footer>
 

@@ -12,6 +12,8 @@ export class LocalCircusComponent implements OnInit {
 
   localCircus: Circus;
 
+  idEventtoBuy: number;
+
 
   constructor(private circusService: CircusService) { }
 
@@ -23,6 +25,10 @@ export class LocalCircusComponent implements OnInit {
     this.circusService.getOne(1).subscribe((circus: Circus) => {
       this.localCircus = circus;
     });
+  }
+
+  getEvent(id) {
+    this.idEventtoBuy = id;
   }
 
 

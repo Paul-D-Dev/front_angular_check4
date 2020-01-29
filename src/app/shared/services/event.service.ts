@@ -9,6 +9,8 @@ export class EventService {
 
   constructor(private wshelperService: WshelperService) { }
 
+  public salesEventId: number;
+
   get() {
     return this.wshelperService.get(environment.serverUrl + 'events/');
   }
