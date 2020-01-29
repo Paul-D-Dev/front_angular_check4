@@ -12,6 +12,8 @@ import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LocalCircusComponent } from './pages/local-circus/local-circus.component';
 import { SalesComponent } from './pages/sales/sales.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { SalesComponent } from './pages/sales/sales.component';
     SignUpComponent,
     HomeComponent,
     LocalCircusComponent,
-    SalesComponent
+    SalesComponent,
+    FooterComponent,
+    HttpClientModule
   ],
   imports: [
     BrowserModule,
