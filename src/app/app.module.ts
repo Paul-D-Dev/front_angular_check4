@@ -18,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatMenuModule} from '@angular/material/menu';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
 
 
 @NgModule({
@@ -42,7 +43,9 @@ import {MatButtonModule} from '@angular/material/button';
     HttpClientModule,
     MatMenuModule,
     BrowserAnimationsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCardModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

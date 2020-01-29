@@ -1,0 +1,28 @@
+
+<div class="container">
+
+  <div class="text">
+    <p>Une équipe, mais surtout une famille avec la passion du crique transmis de génération en génération.</p>
+  </div>
+
+  <div class="content_cards">
+
+    <mat-card class="card" *ngFor="let employee of employees">
+
+      <mat-card-header>
+        <mat-card-title>{{employee.name}} </mat-card-title>
+        <mat-card-subtitle>{{employee.job}} </mat-card-subtitle>
+      </mat-card-header>
+
+      <img mat-card-image [src]="employee.avatarUrl" alt={{employee.name}}>
+
+      <mat-card-content>
+        <p>
+          {{employee.description}}
+        </p>
+      </mat-card-content>
+
+    </mat-card>
+  </div>
+
+</div>

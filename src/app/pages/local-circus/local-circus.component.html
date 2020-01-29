@@ -1,5 +1,6 @@
 <div class="content">
 
+
 <div class="nav">
   <nav>
       <button mat-button>Accueil</button>
@@ -10,13 +11,20 @@
   </nav>
 </div>
 
-<section>
-  
+<section class="section" *ngIf="localCircus">
+  <h1>{{localCircus.name}}</h1>
+  <p>Grands spectables,</p>
+  <p>Sensationnels</p>
 </section>
 
+
+<div class="btn">
+  <button>Acheter des billets</button>
+</div>
+
+</div>
 <app-employee class="employee" id="section_employee"></app-employee>
 <app-event class="event" id="section_event"></app-event>
 <app-circus class="circus" id="section_circus"></app-circus>
 <app-footer class="footer" id="section_footer"></app-footer>
 
-</div>

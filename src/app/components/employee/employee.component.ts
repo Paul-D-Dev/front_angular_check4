@@ -1,3 +1,5 @@
+import { Employee } from './../../shared/models/employee';
+import { EmployeeService } from './../../shared/services/employee.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmployeeComponent implements OnInit {
 
-  constructor() { }
+  employees: Employee[];
+
+  constructor(private employeeService: EmployeeService) { }
+
 
   ngOnInit() {
+    this.employeeService.get().subscribe((employeesArray: Employee[]) => {
+      this.employees = employeesArray;
+    });
   }
 
 }

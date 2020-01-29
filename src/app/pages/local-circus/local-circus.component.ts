@@ -1,3 +1,5 @@
+import { Circus } from './../../shared/models/circus';
+import { CircusService } from './../../shared/services/circus.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,11 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LocalCircusComponent implements OnInit {
 
-  constructor() { }
+
+  localCircus: Circus;
+
+
+  constructor(private circusService: CircusService) { }
+
+
 
 
 
   ngOnInit() {
+    this.circusService.getOne(1).subscribe((circus: Circus) => {
+      this.localCircus = circus;
+    });
   }
 
 
