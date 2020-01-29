@@ -11,12 +11,13 @@ export class SalesComponent implements OnInit {
   constructor(private eventService: EventService) { }
 
   idEventToBuy: number;
+  event: Event;
   ngOnInit() {
     if (this.eventService.salesEventId) {
-      console.log(this.eventService.salesEventId);
       this.idEventToBuy = this.eventService.salesEventId;
-      console.log(this.idEventToBuy);
-
+      this.eventService.getOne(this.eventService.salesEventId).subscribe((event: Event) => {
+        this.event = event;
+      });
     }
 
 
