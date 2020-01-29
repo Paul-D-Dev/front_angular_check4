@@ -1,3 +1,5 @@
+import { User } from './../../shared/models/user';
+import { UserService } from './../../shared/services/user.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService: UserService) { }
+
+  users: User[];
 
   ngOnInit() {
+    this.userService.get().subscribe((data: User[]) => {
+      this.users = data;
+    });
   }
 
 }

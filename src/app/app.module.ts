@@ -1,19 +1,21 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
 
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { EmployeeComponent } from './components/employee/employee.component';
-import { EventComponent } from './components/event/event.component';
-import { CircusComponent } from './components/circus/circus.component';
-import { AdminComponent } from './components/admin/admin.component';
 import { SignInComponent } from './auth/sign-in/sign-in.component';
 import { SignUpComponent } from './auth/sign-up/sign-up.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { CircusComponent } from './components/circus/circus.component';
+import { EmployeeComponent } from './components/employee/employee.component';
+import { EventComponent } from './components/event/event.component';
+import { FooterComponent } from './footer/footer.component';
+import { AdminPageComponent } from './pages/admin/admin-page.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LocalCircusComponent } from './pages/local-circus/local-circus.component';
 import { SalesComponent } from './pages/sales/sales.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FooterComponent } from './footer/footer.component';
+
 
 @NgModule({
   declarations: [
@@ -28,11 +30,13 @@ import { FooterComponent } from './footer/footer.component';
     LocalCircusComponent,
     SalesComponent,
     FooterComponent,
-    HttpClientModule
+    AdminPageComponent
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
