@@ -3,10 +3,28 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { EmployeeComponent } from './components/employee/employee.component';
+import { EventComponent } from './components/event/event.component';
+import { CircusComponent } from './components/circus/circus.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { SignInComponent } from './auth/sign-in/sign-in.component';
+import { SignUpComponent } from './auth/sign-up/sign-up.component';
+import { HomeComponent } from './pages/home/home.component';
+import { LocalCircusComponent } from './pages/local-circus/local-circus.component';
+import { SalesComponent } from './pages/sales/sales.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    EmployeeComponent,
+    EventComponent,
+    CircusComponent,
+    AdminComponent,
+    SignInComponent,
+    SignUpComponent,
+    HomeComponent,
+    LocalCircusComponent,
+    SalesComponent
   ],
   imports: [
     BrowserModule,
