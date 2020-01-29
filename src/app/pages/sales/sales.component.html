@@ -1,1 +1,11 @@
-<p>sales works!</p>
+<ng-container *ngIf="eventToSale; else eventsToSale">
+  {{eventToSale.name}}
+</ng-container>
+
+<ng-template #eventsToSale>
+  <div *ngFor="let event of allEvents">
+    {{event.name}}
+  </div>
+
+</ng-template>
+

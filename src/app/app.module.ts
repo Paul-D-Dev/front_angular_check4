@@ -19,6 +19,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
+import {MatIconModule} from '@angular/material/icon';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import {MatCardModule} from '@angular/material/card';
     MatMenuModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    MatIconModule
 
   ],
   providers: [],
