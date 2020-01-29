@@ -15,6 +15,9 @@ import { HomeComponent } from './pages/home/home.component';
 import { LocalCircusComponent } from './pages/local-circus/local-circus.component';
 import { SalesComponent } from './pages/sales/sales.component';
 import { HttpClientModule } from '@angular/common/http';
+import {MatMenuModule} from '@angular/material/menu';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatButtonModule} from '@angular/material/button';
 
 
 @NgModule({
@@ -37,6 +40,9 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    MatMenuModule,
+    BrowserAnimationsModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
