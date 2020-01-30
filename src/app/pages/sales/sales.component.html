@@ -1,11 +1,63 @@
-<ng-container *ngIf="eventToSale; else eventsToSale">
-  {{eventToSale.name}}
-</ng-container>
 
-<ng-template #eventsToSale>
-  <div *ngFor="let event of allEvents">
-    {{event.name}}
+  <div *ngFor="let event of allEvents; let idEvent=index">
+
+    <div class="event">
+
+      <div class="event_title">
+        {{event.name}}
+      </div>
+
+
+      <div class="event_image">
+        <img [src]="event.image" alt="">
+      </div>
+
+      <div class="event_details">
+        <p>{{event.date | date: 'dd.MM.yyyy'}}</p>
+        <p>
+          {{event.description}}
+        </p>
+      </div>
+
+    </div>
+
+
+  <div class="ticket" *ngFor="let ticket of event.tickets; let idTicket=index">
+
+        <div class="adult" *ngIf="!ticket.isChild">
+          Adulte : {{ticket.price}}€
+          <div class="number">
+            <button mat-button class="minus" (click)="minusProduct(ticket.price, idTicket, idEvent)">-</button>
+            <p>{{ticket.quantity}}</p>
+            <button mat-button class="add" (click)="addProduct(ticket.price, idTicket, idEvent)">+</button>
+          </div>
+          <div class="sum">
+          <button mat-button>{{ticket.sumOrder}} </button>
+        </div>
+        </div>
+
+
+        <div class="child" *ngIf="ticket.isChild">
+          Enfant : {{ticket.price}}€
+          <div class="number">
+            <button mat-button class="minus" (click)="minusProduct(ticket.price,idTicket,idEvent )">-</button>
+            <p>{{ticket.quantity}}</p>
+            <button mat-button class="add" (click)="addProduct(ticket.price, idTicket, idEvent)">+</button>
+          </div>
+          <div class="sum">
+          <button mat-button>{{ticket.sumOrder}} € </button>
+        </div>
+        </div>
+
+
+
+    </div>
+
+   <button mat-button (click)="addToCart(idEvent)">Ajouter au panier</button>
+
   </div>
 
-</ng-template>
 
+
+
+    <h1>Panier : {{totalOrder()}}</h1>

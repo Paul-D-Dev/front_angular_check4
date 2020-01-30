@@ -18,14 +18,14 @@ export class EmployeeService {
   }
 
   create(element) {
-    return this.wshelperService.post(environment.serverUrl + 'users/', element);
+    return this.wshelperService.post(environment.serverUrl + 'employees/', element);
   }
 
   put(element, id) {
-    return this.wshelperService.put(environment.serverUrl + 'users/' + id, element);
+    return this.wshelperService.put(environment.serverUrl + 'employees/' + id, element);
   }
 
   delete(id) {
-    return this.wshelperService.delete(environment.serverUrl + 'users/' + id);
+    return this.wshelperService.delete(environment.serverUrl + 'employees/' + id);
   }
 }

@@ -20,6 +20,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
+import {MatSelectModule} from '@angular/material/select';
+import { IsChildPipe } from './shared/pipes/is-child.pipe';
 
 
 @NgModule({
@@ -35,7 +37,8 @@ import {MatIconModule} from '@angular/material/icon';
     LocalCircusComponent,
     SalesComponent,
     FooterComponent,
-    AdminPageComponent
+    AdminPageComponent,
+    IsChildPipe
 
   ],
   imports: [
@@ -46,7 +49,8 @@ import {MatIconModule} from '@angular/material/icon';
     BrowserAnimationsModule,
     MatButtonModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    MatSelectModule,
 
   ],
   providers: [],

@@ -2,6 +2,8 @@ export class Ticket {
   id: number;
   name: string;
   price: number;
+  quantity: number;
+  sumOrder: number;
   promo?: number;
   isChild: boolean;
   event?: Event;

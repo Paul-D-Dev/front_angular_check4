@@ -1,10 +1,12 @@
+import { User } from './user';
+
 export class Event {
   id: number;
   name: string;
   description: string;
   date: string;
   image: string;
-  ticket: Ticket;
+  tickets: Ticket[];
   circus: Circus;
 }
 
@@ -22,8 +24,11 @@ interface Ticket {
   id: number;
   name: string;
   price: number;
+  quantity: number;
+  sumOrder: number;
   promo?: number;
   isChild: boolean;
+  users: User[];
 }
 
 interface Address {
