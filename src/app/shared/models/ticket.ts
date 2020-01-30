@@ -1,32 +1,13 @@
+import { User } from './user';
+import { Event } from './event';
+
 export class Ticket {
   id: number;
   name: string;
   price: number;
   quantity: number;
-  sumOrder: number;
   promo?: number;
   isChild: boolean;
-  event?: Event;
-  users: User[];
+  event?: number;
+  user: User;
 }
-
-interface Event {
-  id: number;
-  name: string;
-  description: string;
-  date: string;
-  image: string;
-}
-
-interface User {
-  id: number;
-  name: string;
-  email: string;
-  password: string;
-  birthday: string;
-  avatarUrl: string;
-  role: string;
-  activated: boolean;
-  tickets: Ticket[];
-}
-

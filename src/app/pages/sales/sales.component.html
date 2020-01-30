@@ -1,63 +1,58 @@
+<mat-sidenav-container>
 
-  <div *ngFor="let event of allEvents; let idEvent=index">
+  <mat-sidenav-content>
 
-    <div class="event">
+    <div *ngFor="let event of allEvents; let idEvent=index">
 
-      <div class="event_title">
-        {{event.name}}
+      <div class="event">
+
+        <div class="event_title">
+          {{event.name}}
+        </div>
+
+
+        <div class="event_image">
+          <img [src]="event.image" alt="">
+        </div>
+
+        <div class="event_details">
+          <p>{{event.date | date: 'dd.MM.yyyy'}}</p>
+          <p>
+            {{event.description}}
+          </p>
+        </div>
+
       </div>
 
-
-      <div class="event_image">
-        <img [src]="event.image" alt="">
-      </div>
-
-      <div class="event_details">
-        <p>{{event.date | date: 'dd.MM.yyyy'}}</p>
-        <p>
-          {{event.description}}
-        </p>
-      </div>
+    <button mat-button (click)="addToCart(event)" (click)="sidenav.open()" >Ajouter au panier</button>
 
     </div>
 
-
-  <div class="ticket" *ngFor="let ticket of event.tickets; let idTicket=index">
-
-        <div class="adult" *ngIf="!ticket.isChild">
-          Adulte : {{ticket.price}}€
-          <div class="number">
-            <button mat-button class="minus" (click)="minusProduct(ticket.price, idTicket, idEvent)">-</button>
-            <p>{{ticket.quantity}}</p>
-            <button mat-button class="add" (click)="addProduct(ticket.price, idTicket, idEvent)">+</button>
-          </div>
-          <div class="sum">
-          <button mat-button>{{ticket.sumOrder}} </button>
-        </div>
-        </div>
-
-
-        <div class="child" *ngIf="ticket.isChild">
-          Enfant : {{ticket.price}}€
-          <div class="number">
-            <button mat-button class="minus" (click)="minusProduct(ticket.price,idTicket,idEvent )">-</button>
-            <p>{{ticket.quantity}}</p>
-            <button mat-button class="add" (click)="addProduct(ticket.price, idTicket, idEvent)">+</button>
-          </div>
-          <div class="sum">
-          <button mat-button>{{ticket.sumOrder}} € </button>
-        </div>
-        </div>
+  </mat-sidenav-content>
 
 
 
-    </div>
+    <mat-sidenav #sidenav mode="side" position="end" >
 
-   <button mat-button (click)="addToCart(idEvent)">Ajouter au panier</button>
+              <div class="cart" *ngFor="let event of cart; let idTicket = index">
 
-  </div>
+                <p>{{event.name}}</p>
+                <p>{{event.priceAdult}} €</p>
+                <button mat-button (click)="minusProduct(event)">-</button>
+                <p>{{event.quantity}}</p>
+                <button mat-button (click)="addProduct(event)">+</button>
+              </div>
+
+               <h1>Panier : {{totalOrder()}}</h1>
+               <button mat-button (click)="validCard()">Commander</button>
+               <button mat-button (click)="sidenav.close()">Fermer</button>
+    </mat-sidenav>
+
+
+
+</mat-sidenav-container>
 
 
 
 
-    <h1>Panier : {{totalOrder()}}</h1>
+

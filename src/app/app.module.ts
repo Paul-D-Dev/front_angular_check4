@@ -22,6 +22,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSelectModule} from '@angular/material/select';
 import { IsChildPipe } from './shared/pipes/is-child.pipe';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import { IsChildPipe } from './shared/pipes/is-child.pipe';
     MatCardModule,
     MatIconModule,
     MatSelectModule,
+    MatSidenavModule
 
   ],
   providers: [],

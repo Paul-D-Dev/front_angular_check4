@@ -1,8 +1,9 @@
-import { Order } from './../../shared/models/order';
-import { Ticket } from './../../shared/models/ticket';
-import { EventService } from './../../shared/services/event.service';
 import { Component, OnInit } from '@angular/core';
 import { Event } from '../../shared/models/event';
+import { Ticket } from './../../shared/models/ticket';
+import { EventService } from './../../shared/services/event.service';
+import { TicketService } from './../../shared/services/ticket.service';
+import { User } from '../../shared/models/user';
 
 @Component({
   selector: 'app-sales',
@@ -11,18 +12,18 @@ import { Event } from '../../shared/models/event';
 })
 export class SalesComponent implements OnInit {
 
-  constructor(private eventService: EventService) { }
+  constructor(private eventService: EventService, private ticketService: TicketService) { }
 
   idEventToBuy: number;
 
-  eventToSale: Event;
-  ticket: Ticket;
-
   allEvents: Event[] = [];
 
-  cart: Ticket[] = [];
+  cart: Event[] = [];
 
-totalSUm = 0;
+
+
+
+  totalCart = 0;
 
 
   ngOnInit() {
@@ -39,44 +40,58 @@ totalSUm = 0;
     }
   }
 
-  minusProduct(price, idTicket: number, idEvent) {
-    if (this.allEvents[idEvent].tickets[idTicket].quantity !== 0) {
-      this.allEvents[idEvent].tickets[idTicket].quantity--;
-      this.allEvents[idEvent].tickets[idTicket].sumOrder = this.allEvents[idEvent].tickets[idTicket].quantity * price;
+  minusProduct(event: Event) {
+
+
+    if (event.quantity !== 0) {
+      event.quantity--;
     }
   }
 
-  addProduct(price, idTicket: number, idEvent) {
-    this.allEvents[idEvent].tickets[idTicket].quantity++;
-    this.allEvents[idEvent].tickets[idTicket].sumOrder = this.allEvents[idEvent].tickets[idTicket].quantity * price;
+  addProduct(event: Event) {
+    event.quantity++;
   }
 
 
  // Total par event
  // Si ticket déjà présent dans le cart, on modifit ticket.quantity
  // Si ticket non présent, on ajoute ticket
-  addToCart(idEvent) {
-    for (const ticket of this.allEvents[idEvent].tickets) {
-      if (this.cart.indexOf(ticket) !== -1) {
-
-      } else if (ticket.quantity > 0) {
-      this.cart.push(ticket);
-      }
+  addToCart(event: Event) {
+    if (!this.cart.includes(event)) {
+      event.quantity++;
+      this.cart.push(event);
     }
     return this.cart;
-
   }
 
 
-    totalOrder() {
+
+totalOrder() {
     let sum = 0;
-    for (const ticket of this.cart) {
-      sum += ticket.sumOrder;
+    for (const event of this.cart) {
+      sum += event.quantity * event.priceAdult;
     }
     return `€ ${sum}`;
     }
 
+
+validCard() {
+    for (const event of this.cart) {
+      const ticket = new Ticket();
+      const user = new User();
+      user.name = 'Julien';
+      user.email = 'julien@gmail.com';
+      ticket.name = event.name;
+      ticket.event = event.id;
+      ticket.price = event.priceAdult;
+      ticket.quantity = event.quantity;
+      ticket.user = user;
+
+      console.log(ticket);
+      this.ticketService.create(ticket).subscribe();
+    }
+  }
+
+
+
 }
-
-
-

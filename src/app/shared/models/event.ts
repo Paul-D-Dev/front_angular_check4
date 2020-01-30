@@ -1,4 +1,6 @@
-import { User } from './user';
+
+import { Ticket } from './ticket';
+import { Circus } from './circus';
 
 export class Event {
   id: number;
@@ -6,45 +8,9 @@ export class Event {
   description: string;
   date: string;
   image: string;
+  priceAdult: number;
+  quantity: number;
   tickets: Ticket[];
   circus: Circus;
 }
 
-
-interface Circus {
-  id: number;
-  name: string;
-  phone: string;
-  address: Address;
-  employees: Employees[];
-  events: Event[];
-}
-
-interface Ticket {
-  id: number;
-  name: string;
-  price: number;
-  quantity: number;
-  sumOrder: number;
-  promo?: number;
-  isChild: boolean;
-  users: User[];
-}
-
-interface Address {
-  id: number;
-  street: string;
-  town: string;
-  zip: number;
-  x?: any;
-  y?: any;
-}
-
-interface Employees {
-  id: number;
-  name: string;
-  job: string;
-  description: string;
-  avatarUrl: string;
-  circus?: Circus;
-}
