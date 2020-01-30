@@ -23,6 +23,10 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatSelectModule} from '@angular/material/select';
 import { IsChildPipe } from './shared/pipes/is-child.pipe';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatDialogModule} from '@angular/material/dialog';
+import { ModalComponent } from './components/modal/modal.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+
 
 
 @NgModule({
@@ -39,7 +43,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     SalesComponent,
     FooterComponent,
     AdminPageComponent,
-    IsChildPipe
+    IsChildPipe,
+    ModalComponent
 
   ],
   imports: [
@@ -52,10 +57,17 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     MatCardModule,
     MatIconModule,
     MatSelectModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatDialogModule,
+    MatFormFieldModule
+
 
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    ModalComponent
+
+  ]
 })
 export class AppModule { }

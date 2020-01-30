@@ -4,6 +4,12 @@ import { Ticket } from './../../shared/models/ticket';
 import { EventService } from './../../shared/services/event.service';
 import { TicketService } from './../../shared/services/ticket.service';
 import { User } from '../../shared/models/user';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalComponent } from '../../components/modal/modal.component';
+
+export interface DialogData {
+  cart: Event[];
+}
 
 @Component({
   selector: 'app-sales',
@@ -12,7 +18,9 @@ import { User } from '../../shared/models/user';
 })
 export class SalesComponent implements OnInit {
 
-  constructor(private eventService: EventService, private ticketService: TicketService) { }
+  constructor(private eventService: EventService,
+              private ticketService: TicketService,
+              public dialog: MatDialog) { }
 
   idEventToBuy: number;
 
@@ -52,10 +60,6 @@ export class SalesComponent implements OnInit {
     event.quantity++;
   }
 
-
- // Total par event
- // Si ticket déjà présent dans le cart, on modifit ticket.quantity
- // Si ticket non présent, on ajoute ticket
   addToCart(event: Event) {
     if (!this.cart.includes(event)) {
       event.quantity++;
@@ -63,7 +67,6 @@ export class SalesComponent implements OnInit {
     }
     return this.cart;
   }
-
 
 
 totalOrder() {
@@ -92,6 +95,16 @@ validCard() {
     }
   }
 
+  openDialog(): void {
+    const dialogRef = this.dialog.open(ModalComponent, {
+      width: '250px',
+      data: {cart : this.cart}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
 
 
 }
