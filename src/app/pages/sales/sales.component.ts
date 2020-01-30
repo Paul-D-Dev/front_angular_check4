@@ -78,31 +78,32 @@ totalOrder() {
     }
 
 
-validCard() {
-    for (const event of this.cart) {
+validCard(userForm) {
+
+  const user = userForm;
+  for (const event of this.cart) {
       const ticket = new Ticket();
-      const user = new User();
-      user.name = 'Julien';
-      user.email = 'julien@gmail.com';
+      user.name = user.name;
+      user.email = user.email;
       ticket.name = event.name;
       ticket.event = event.id;
       ticket.price = event.priceAdult;
       ticket.quantity = event.quantity;
       ticket.user = user;
 
-      console.log(ticket);
       this.ticketService.create(ticket).subscribe();
     }
   }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(ModalComponent, {
-      width: '250px',
+      width: '350px',
       data: {cart : this.cart}
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+    dialogRef.afterClosed().subscribe(user => {
+      this.validCard(user);
+
     });
   }
 

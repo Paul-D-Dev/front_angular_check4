@@ -26,6 +26,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ModalComponent } from './components/modal/modal.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -59,7 +61,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatSelectModule,
     MatSidenavModule,
     MatDialogModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule
 
 
   ],

@@ -1,11 +1,31 @@
 
 <div mat-dialog-content>
-  <p>What's your favorite animal?</p>
-  <mat-form-field>
+  <p>Terminez la commande</p>
 
-  </mat-form-field>
+  <form [formGroup]="cartForm" (ngSubmit)="cartForm.valid && postTicket()">
+
+    <p>
+      <label>Votre nom :</label>
+      <input type="text" name="name" formControlName="name" required [(ngModel)]="user.name">
+    </p>
+
+    <p>
+      <label>Votre email :</label>
+      <input type="email" name="email" formControlName="email" required [(ngModel)]="user.email">
+    </p>
+
+
+    <div *ngFor="let event of cart">
+
+      <p> {{event.quantity}} place(s) pour {{event.name}} </p>
+    </div>
+
+    <div mat-dialog-actions>
+      <button mat-button (click)="onNoClick()">Annuler</button>
+      <button type="submit" mat-button [mat-dialog-close]="user" [disabled]="!cartForm.valid">Valider</button>
+    </div>
+  </form>
 </div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="" cdkFocusInitial>Ok</button>
-</div>
+
+
+

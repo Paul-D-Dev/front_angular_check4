@@ -1,6 +1,7 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { SalesComponent } from '../../pages/sales/sales.component';
-import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { User } from './../../shared/models/user';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { FormBuilder, Validators } from '@angular/forms';
 
 export interface DialogData {
   cart: Event[];
@@ -13,14 +14,40 @@ export interface DialogData {
 })
 export class ModalComponent implements OnInit {
 
+  cart: Event[] = [];
+  user = new User();
+
   constructor(
+    private fb: FormBuilder,
     public dialogRef: MatDialogRef<ModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+
+    cartForm = this.fb.group({
+      name: ['', Validators.required],
+      email: ['', Validators.required],
+    });
+
 
   onNoClick(): void {
     this.dialogRef.close();
   }
   ngOnInit() {
+    console.log(this.data.cart);
+
+    this.cart = this.data.cart;
+
+    console.log(this.cart);
+
+  }
+
+  postTicket() {
+    this.cartForm.patchValue({
+      name: this.cartForm.value.name,
+      email: this.cartForm.value.email
+    });
+    console.log(this.cartForm.value);
+
   }
 
 }
