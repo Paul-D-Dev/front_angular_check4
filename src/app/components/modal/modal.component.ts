@@ -2,6 +2,7 @@ import { User } from './../../shared/models/user';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormBuilder, Validators } from '@angular/forms';
+import { emailValidator } from './email-validator';
 
 export interface DialogData {
   cart: Event[];
@@ -25,7 +26,8 @@ export class ModalComponent implements OnInit {
 
     cartForm = this.fb.group({
       name: ['', Validators.required],
-      email: ['', Validators.required],
+      email: ['', Validators.required, ],
+      // email: ['', Validators.required, emailValidator],
     });
 
 

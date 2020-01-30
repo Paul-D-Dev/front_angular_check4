@@ -91,7 +91,7 @@ validCard(userForm) {
       ticket.quantity = event.quantity;
       ticket.user = user;
 
-      this.ticketService.create(ticket).subscribe();
+      // this.ticketService.create(ticket).subscribe();
     }
   }
 
